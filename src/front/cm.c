@@ -12,14 +12,14 @@ int main(int argc, char **argv)
 	char *gen = NULL;
 	int len = 0;
 	bool help = false, version=false;
-	
+
 	if (argc == 1) {
 		printf("C-Mera generator selection frontend.\n"
 				"Please specify generator type as c, c++, cxx, glsl, ocl, cuda or use --help.\n"
 				"Generator abbreviations are ok and checked in the order given above.\n");
 		return 1;
 	}
-	
+
 	len = strlen(argv[1]);
 	if      (strncmp(argv[1], "c",      len) == 0) gen = "cm-c";
 	else if (strncmp(argv[1], "c++",    len) == 0) gen = "cm-cxx";
@@ -50,5 +50,3 @@ int main(int argc, char **argv)
 	fprintf(stderr, "Cannot spawn generator process: %s\n", strerror(errno));
 	return 1;
 }
-
-
