@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 	else if (strncmp(argv[1], "opencl", len) == 0) gen = "cm-opencl";
 	else if (strncmp(argv[1], "cuda",   len) == 0) gen = "cm-cuda";
 	else if (strncmp(argv[1], "--version", len) == 0) { gen = "cm-c"; version = true; }
+	else if (strncmp(argv[1], "--help", len) == 0) { gen = "cm-c"; help = true; }
 	else if (strncmp(argv[1], "-V", len) == 0) { gen = "cm-c"; version = true; }
 	else { gen = "cm-c"; help = true; }
 	
