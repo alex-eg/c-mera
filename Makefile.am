@@ -42,10 +42,7 @@ cm_opencl_SOURCES = src/opencl/nodes.lisp \
 					src/opencl/pretty.lisp \
 					src/opencl/cm-opencl.lisp
 
-# since we store $(bindir) in the front-end program we have to make sure to recompile
-# when the Makefile changes (potential change of prefix.
 cm_SOURCES = src/front/cm.c
-cm_CFLAGS = -DBINDIR=\"$(bindir)\"
 cm$(EXEEXT): $(cm_SOURCES) Makefile
 	$(CC) $(CPPFLAGS) $(cm_CFLAGS) $< -o $@
 
@@ -67,4 +64,3 @@ cm-opencl$(EXEEXT): $(cm_c_SOURCES) $(cm_cxx_SOURCES) $(cm_opencl_SOURCES)
 EXTRA_DIST = util/build/dump-c.lisp   util/build/dump-glsl.lisp \
 			 util/build/dump-cxx.lisp util/build/dump-cuda.lisp \
 			 util/build/dump-opencl.lisp
-

@@ -32,20 +32,14 @@ int main(int argc, char **argv)
 	else if (strncmp(argv[1], "--help", len) == 0) { gen = "cm-c"; help = true; }
 	else if (strncmp(argv[1], "-V", len) == 0) { gen = "cm-c"; version = true; }
 	else { gen = "cm-c"; help = true; }
-	
-	int n = asprintf(&prog, "%s/%s", BINDIR, gen);
-	if (n <= 0) {
-		fprintf(stderr, "Allocation error, cannot start generator.\n");
-		return 1;
-	}
-	
+
 	if (help)
-		execl(prog, "cm <generator>", "--help", NULL);
+		execl(gen, "cm <generator>", "--help", NULL);
 	else if (version)
-		execl(prog, "cm <generator>", "--version", NULL);
+		execl(gen, "cm <generator>", "--version", NULL);
 	else {
 		argv[1] = gen;
-		execv(prog, argv+1);
+		execv(gen, argv+1);
 	}
 	fprintf(stderr, "Cannot spawn generator process: %s\n", strerror(errno));
 	return 1;
